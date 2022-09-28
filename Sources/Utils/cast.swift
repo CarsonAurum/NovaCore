@@ -27,7 +27,7 @@ public func _cast<T, U>(_ value: T, to: U.Type) -> U? {
 ///   - value: The value to cast.
 ///   - type: The type to cast to.
 /// - Returns: The value after the cast.
-/// - Throws: An `NovaError/invalidCast` error if the cast fails.
+/// - Throws: An ``NovaError/invalidCast`` error if the cast fails.
 @inlinable
 public func cast<T, U>(_ value:  T, to type: U.Type = U.self) throws -> U {
     guard let result = value as? U else {
