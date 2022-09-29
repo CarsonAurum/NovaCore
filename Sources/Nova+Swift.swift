@@ -23,3 +23,20 @@ prefix operator -!>
 prefix operator -?>
 prefix operator -*>
 
+// MARK: Functional
+
+precedencegroup ForwardApplication {
+    associativity: left
+    higherThan: AssignmentPrecedence
+}
+
+precedencegroup ForwardComposition {
+    associativity: left
+    higherThan: ForwardApplication
+}
+
+prefix operator ^                       // KeyPath Accessor
+infix operator |>: ForwardApplication   // Forward Function Application
+infix operator >>>: ForwardComposition  // Forward Function Composition
+
+
