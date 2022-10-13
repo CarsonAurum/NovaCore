@@ -9,11 +9,13 @@ let package = Package(
             name: "NovaCore",
             targets: ["NovaCore"]),
     ],
-    dependencies: [],
+    dependencies: [
+        .package(url: "https://github.com/apple/swift-numerics", branch: "main"),
+    ],
     targets: [
         .target(
             name: "NovaCore",
-            dependencies: [],
+            dependencies: [.product(name: "Numerics", package: "swift-numerics")],
             path: "Sources/"),
         .testTarget(
             name: "NovaCoreTests",
