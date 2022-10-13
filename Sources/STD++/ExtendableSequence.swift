@@ -2,16 +2,6 @@
 // Created by Carson Rau on 3/2/22.
 //
 
-import protocol Swift.Sequence
-import protocol Swift.Collection
-import protocol Swift.BidirectionalCollection
-import protocol Swift.RandomAccessCollection
-
-import struct Swift.Array
-import struct Swift.Dictionary
-import struct Swift.String
-import struct Swift.Set
-
 /// A type representing a sequence that can be extended via insertion or appending.
 public protocol ExtendableSequence: Sequence {
     /// Single element insertion operation result type.

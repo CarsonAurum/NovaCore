@@ -5,10 +5,6 @@
 #if canImport(Foundation)
 import func Foundation.pow
 #endif
-import enum Swift.FloatingPointRoundingRule
-import struct Swift.Int
-import struct Swift.Double
-import protocol Swift.BinaryFloatingPoint
 
 extension BinaryFloatingPoint {
     #if canImport(Foundation)

@@ -2,9 +2,6 @@
 //  Created by Carson Rau on 6/22/22.
 //
 
-import struct Swift.Array
-import enum Swift.Optional
-
 /// A result builder to facilitate an efficient DSL syntax for array creation.
 @resultBuilder
 public enum ArrayBuilder {

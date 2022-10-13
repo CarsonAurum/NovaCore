@@ -2,11 +2,6 @@
 // Created by Carson Rau on 1/26/22.
 //
 
-import protocol Swift.AdditiveArithmetic
-import protocol Swift.FloatingPoint
-import protocol Swift.SignedInteger
-import protocol Swift.UnsignedInteger
-
 extension AdditiveArithmetic {
     /// Returns the sum and difference of two floating point values.
     ///

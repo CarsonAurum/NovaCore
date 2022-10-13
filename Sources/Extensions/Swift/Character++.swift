@@ -2,12 +2,6 @@
 // Created by Carson Rau on 1/31/22.
 //
 
-import struct Swift.Character
-import struct Swift.Bool
-import struct Swift.String
-import struct Swift.Int
-import struct Swift.UInt32
-
 // MARK: - Static Extensions
 extension Character {
     /// Static access to a new-line character.
@@ -19,6 +13,16 @@ extension Character {
 }
 // MARK: - Properties
 extension Character {
+    public var asciiValue: UInt32 {
+        get {
+            let s = String(self).unicodeScalars
+            return s[s.startIndex].value
+        }
+    }
+    /// Integer from character (if applicable).
+    public var int: Int? {
+        Int(String(self))
+    }
     /// Check if a character is an emoji.
     public var isEmoji: Bool {
         switch String(self).unicodeScalars.first!.value {
@@ -40,10 +44,6 @@ extension Character {
             return false
         }
     }
-    /// Integer from character (if applicable).
-    public var int: Int? {
-        Int(String(self))
-    }
     /// Access the lowercased version of this character.
     public var lowercased: Character {
         String(self).lowercased().first!
@@ -55,12 +55,6 @@ extension Character {
     /// Access the uppercased version of this character.
     public var uppercased: Character {
         String(self).uppercased().first!
-    }
-    public var asciiValue: UInt32 {
-        get {
-            let s = String(self).unicodeScalars
-            return s[s.startIndex].value
-        }
     }
     
 }
