@@ -5,9 +5,7 @@ let package = Package(
     name: "NovaCore",
     platforms: [.iOS(.v13), .macOS(.v10_15)],
     products: [
-        .library(
-            name: "NovaCore",
-            targets: ["NovaCore"]),
+        .library(name: "NovaCore", targets: ["NovaCore"]),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-numerics", branch: "main"),
@@ -17,8 +15,6 @@ let package = Package(
             name: "NovaCore",
             dependencies: [.product(name: "Numerics", package: "swift-numerics")],
             path: "Sources/"),
-        .testTarget(
-            name: "NovaCoreTests",
-            dependencies: ["NovaCore"]),
+        .testTarget(name: "NovaCoreTests", dependencies: ["NovaCore"], path: "Tests/"),
     ]
 )
