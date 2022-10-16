@@ -181,6 +181,20 @@ public extension Sequence {
                     )
         )
     }
+    func sorted<Value>(
+        by keyPath: KeyPath<Self.Element, Value>,
+        using valuesAreInIncreasingOrder: (Value, Value) throws -> Bool)
+        rethrows -> Self {
+        try sorted(by: {
+            try valuesAreInIncreasingOrder($0[keyPath: keyPath], $1[keyPath: keyPath])
+        }) as! Self
+    }
+    
+    func sorted<Value: Comparable>(
+        by keyPath: KeyPath<Self.Element, Value>)
+        -> Self {
+        return self.sorted(by: keyPath, using: <)
+    }
     /// Sort a sequence like another array based on a key path.
     ///
     /// - Note: If the other sequence doesn't contain a certain value, it will be sorted last.

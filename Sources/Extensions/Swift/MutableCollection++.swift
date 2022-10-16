@@ -19,3 +19,17 @@ public extension MutableCollection {
         swapAt(index, otherIndex)
     }
 }
+
+extension MutableCollection where Self: RandomAccessCollection {
+    public mutating func sort<Value>(
+        by keyPath: KeyPath<Self.Element, Value>,
+        using valuesAreInIncreasingOrder: (Value, Value) throws -> Bool)
+        rethrows {
+            self = try sorted(by: keyPath, using: valuesAreInIncreasingOrder)
+    }
+    
+    public mutating func sort<Value: Comparable>(
+        by keyPath: KeyPath<Self.Element, Value>) {
+        self = sorted(by: keyPath, using: <)
+    }
+}
