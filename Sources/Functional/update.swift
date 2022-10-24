@@ -20,6 +20,9 @@ public func updateObject<A: AnyObject>(_ value: A, _ fs: (A) -> Void...) -> A {
 }
 
 // MARK: - Operators
+
+
+// MARK: Single
 public func |> <A>(_ a: A, _ f: @escaping (inout A) -> Void) -> A {
    update(a, f)
 }
@@ -32,4 +35,25 @@ public func |> <A:AnyObject>(_ a: A, _ f: @escaping (A) -> Void) -> A {
 @discardableResult
 public func |> <A, B>(_ a: A, _ f: @escaping (A) -> B) -> B {
     with(a, f)
+}
+
+// MARK: Tuple x3
+public func |> <A>(_ a: (A, A, A), _ f: @escaping (inout A) -> Void) -> (A, A, A) {
+    (update(a.0, f), update(a.1, f), update(a.2, f))
+}
+public func |> <A>(_ a: inout (A, A, A), _ f: @escaping (inout A) -> Void) {
+    update(&a.0, f)
+    update(&a.1, f)
+    update(&a.2, f)
+}
+public func |> <A:AnyObject>(_ a: (A, A, A), _ f: @escaping (A) -> Void) -> (A, A, A) {
+    (updateObject(a.0, f), updateObject(a.1, f), updateObject(a.2, f))
+}
+@discardableResult
+public func |> <A, B>(_ a: (A, A, A), _ f: @escaping (A) -> B) -> (B, B, B) {
+    (with(a.0, f), with(a.1, f), with(a.2, f))
+}
+@discardableResult
+public func |> <A, B, C>(_ a: ((A, A, A), C), _ f: @escaping (A, C) -> B) -> (B, B, B) {
+    (with((a.0.0, a.1), f), with((a.0.1, a.1), f), with((a.0.2, a.1), f))
 }

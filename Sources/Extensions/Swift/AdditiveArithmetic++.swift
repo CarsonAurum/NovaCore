@@ -2,7 +2,12 @@
 // Created by Carson Rau on 1/26/22.
 //
 
-extension AdditiveArithmetic {
+public func add <T: AdditiveArithmetic>
+(_ a: T, _ b: T ) -> T {
+    a + b
+}
+
+extension AdditiveArithmetic {    
     /// Returns the sum and difference of two floating point values.
     ///
     /// - Parameters:

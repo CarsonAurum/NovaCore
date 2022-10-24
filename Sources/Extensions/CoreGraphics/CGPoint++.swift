@@ -22,6 +22,13 @@ public extension CGPoint {
 }
 
 public extension CGPoint {
+    var magnitude: Double {
+        let squareDouble = 2 |> flip(curry(Double.pow))
+        return ((x |> squareDouble) + (y |> squareDouble)) |> Double.sqrt
+    }
+}
+
+public extension CGPoint {
     func distance(from point: Self) -> CGFloat {
         CGPoint.distance(from: self, to: point)
     }
