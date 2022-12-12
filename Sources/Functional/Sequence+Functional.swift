@@ -6,6 +6,19 @@
 //
 
 
+public func compactMap<S: Sequence, A>(_ transform: @escaping (S.Element) -> A?) -> (S) -> [A] {
+    return {
+        var result = [A]()
+        $0.forEach { element in
+            if let transformedValue = transform(element) {
+                result.append(transformedValue)
+            }
+        }
+        return result
+    }
+}
+
+
 /// Free `map` on sequences for function composition.
 ///
 /// - Parameter transform: A transform function.

@@ -10,7 +10,7 @@
 /// - Parameter function: A function taking zero arguments.
 /// - Returns: The return value.
 public func zurry<A>(_ function: @escaping () throws -> A) rethrows -> A {
-  return try function()
+    try function()
 }
 
 /// Wraps a value in a function.
@@ -18,7 +18,7 @@ public func zurry<A>(_ function: @escaping () throws -> A) rethrows -> A {
 /// - Parameter value: A value.
 /// - Returns: A wrapper function.
 public func unzurry<A>(_ value: @autoclosure @escaping () -> A) -> () -> A {
-  return value
+    value
 }
 
 /// A throwing variant of `unzurry`.
@@ -26,5 +26,5 @@ public func unzurry<A>(_ value: @autoclosure @escaping () -> A) -> () -> A {
 /// - Parameter value: A value.
 /// - Returns: A wrapper function.
 public func unzurry<A>(_ value: @autoclosure @escaping () throws -> A) -> () throws -> A {
-  return value
+    value
 }

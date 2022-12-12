@@ -3,8 +3,7 @@
 //
 
 /// An error thrown within the core Nova framework.
-@usableFromInline
-internal enum NovaError: Error {
+public enum NovaError: Error {
     case invalidCast
     case boolean
     case optional
