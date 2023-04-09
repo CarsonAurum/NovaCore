@@ -72,6 +72,8 @@ public extension Collection {
     func range(from range: Range<Int>) -> Range<Index> {
         index(atDistance: range.lowerBound) ..< index(atDistance: range.upperBound)
     }
+    @inlinable
+    func randomElements(count: Int) -> ArraySlice<Element> { shuffled().prefix(count) }
 }
 
 public extension Collection {
